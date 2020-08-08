@@ -3,7 +3,7 @@
 """ Creates vortex coordinates for a vortex ring """
 import numpy as np
 
-radius = 1.1
+radius = 1.0
 zCoordinate = 0.0
 nFilaments = 25
 filename = 'vortexFilaments.dat'

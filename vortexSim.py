@@ -16,13 +16,15 @@ def getCoords(vts):
     return coords
 
 vtxFilamentsFilename = 'vortexFilaments.dat'
+animationFilename = 'output.gif'
 dt = 0.01
-nt = 50
+nt = 10
 
 # Read coordinates of vortices 
 vts = np.loadtxt(vtxFilamentsFilename)
 shape = np.shape(vts)
 nVortices = shape[0]
+print('Total vortices found: ' + str(nVortices))
 
 # Initialize vortices
 vortx = []
@@ -43,7 +45,7 @@ fig = plt.figure()
 ax = plt.axes(projection='3d')
 camera = Camera(fig)
 for i in range(nt):
-    print(str(i) + '/' + str(nt))
+    print(str(i+1) + '/' + str(nt))
     coords = getCoords(vortx)
 
     plt.xlabel('X-axis')
@@ -59,4 +61,4 @@ for i in range(nt):
         vt.update(dt)
 
 animation = camera.animate()
-animation.save('celluloid.gif', writer='imagemagick')
+animation.save('output.gif', writer='imagemagick')
