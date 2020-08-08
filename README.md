@@ -2,7 +2,7 @@
 A simple 3d simulation for vortex filament convection
 
 ## Working
-`vortexSim.py` is the program that simulates motion of vortex filaments in 3-dimensional space.
+`vortexSim.py` is the program that simulates motion of vortex filaments in 3-dimensional space.  
 The vortex filament coordinates are read from the file `vortexFilaments.dat` 
 in CSV format in the following form:
 ```
