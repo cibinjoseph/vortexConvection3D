@@ -6,7 +6,7 @@ import numpy as np
 radius = 1.1
 zCoordinate = 0.0
 nFilaments = 25
-filename = 'vortices.dat'
+filename = 'vortexFilaments.dat'
 
 # Create coordinates of a circle
 thetas = np.linspace(0.0, 2.0*np.pi, nFilaments)
