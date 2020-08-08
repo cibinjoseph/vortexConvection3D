@@ -15,11 +15,12 @@ def getCoords(vts):
         coords = vt.appCoords(coords)
     return coords
 
+vtxFilamentsFilename = 'vortexFilaments.dat'
 dt = 0.01
 nt = 50
 
 # Read coordinates of vortices 
-vts = np.loadtxt('vorticesGen.dat')
+vts = np.loadtxt(vtxFilamentsFilename)
 shape = np.shape(vts)
 nVortices = shape[0]
 
