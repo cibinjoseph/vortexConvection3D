@@ -1,3 +1,5 @@
 __pycache__
 *.dat
 *.gif
+Results/*.plt
+visitlog.py
