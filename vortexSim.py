@@ -4,9 +4,15 @@
 import vtx
 import numpy as np
 import matplotlib.pyplot as plt
-# import matplotlib.animation as animation
 from mpl_toolkits.mplot3d import axes3d
 from celluloid import Camera
+
+
+vtxFilamentsFilename = 'vortexFilaments.dat'
+animationFilename = 'output.gif'
+resultsDir = 'Results/'
+dt = 0.01
+nt = 10
 
 def getCoords(vts):
     """ Get coordinates of vortices in x, y, z form """
@@ -15,10 +21,17 @@ def getCoords(vts):
         coords = vt.appCoords(coords)
     return coords
 
-vtxFilamentsFilename = 'vortexFilaments.dat'
-animationFilename = 'output.gif'
-dt = 0.01
-nt = 10
+def write2file(filename, vts):
+    """ Writes out vortex filament coordinates to file """
+    with open(filename, 'w') as fh:
+        fh.write('TITLE = "Vortex Convection"\n')
+        fh.write('VARIABLES = "X" "Y" "Z"\n')
+        zoneHeader = 'ZONE I=2, J=1, K=1\n'
+        for vt in vts:
+            fh.write(zoneHeader)
+            xyz1, xyz2 = vt.getStrXYZ()
+            fh.write(xyz1 + '\n')
+            fh.write(xyz2 + '\n')
 
 # Read coordinates of vortices 
 vts = np.loadtxt(vtxFilamentsFilename)
@@ -45,13 +58,15 @@ fig = plt.figure()
 ax = plt.axes(projection='3d')
 camera = Camera(fig)
 for i in range(nt):
-    print(str(i+1) + '/' + str(nt))
+    timestamp = format(i+1, '05')
+    print(timestamp + '/' + str(nt))
     coords = getCoords(vortx)
 
     plt.xlabel('X-axis')
     plt.ylabel('Y-axis')
     ax.plot(coords[0],coords[1],coords[2],'b')
     camera.snap()
+    write2file(resultsDir + 'vortices' + timestamp + '.plt', vortx)
 
     for vt in vortx:
         for vtOther in vortx:

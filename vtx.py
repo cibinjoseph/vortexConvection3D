@@ -65,3 +65,8 @@ class Vtx:
         coords[1].extend([self.P1[1], self.P2[1]])
         coords[2].extend([self.P1[2], self.P2[2]])
         return coords
+
+    def getStrXYZ(self):
+        xyz1 = str(self.P1[0])+' '+str(self.P1[1])+' '+str(self.P1[2])
+        xyz2 = str(self.P2[0])+' '+str(self.P2[1])+' '+str(self.P2[2])
+        return xyz1, xyz2
