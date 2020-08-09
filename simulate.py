@@ -3,6 +3,8 @@
 """ Simulates motion of vortices """
 import vtx
 import numpy as np
+import os
+import shutil
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import axes3d
 from celluloid import Camera
@@ -10,7 +12,7 @@ from celluloid import Camera
 
 # Simulation parameters
 dt = 0.01
-nt = 10
+nt = 3
 generateAnimation = False
 generatePlots = True
 
@@ -81,15 +83,27 @@ def main():
             write2file(resultsDir + 'vortices' + timestamp + '.plt', vortx)
 
         for vt in vortx:
+            print('--')
+            print('Coords')
+            print(vt.P1)
+            print(vt.P2)
             for vtOther in vortx:
+                print('by')
+                print(vtOther.P1)
+                print(vtOther.P2)
                 vt.addInfluenceBy(vtOther)
+                print(vt.vel1)
 
         for vt in vortx:
             vt.update(dt)
+
 
     if generateAnimation:
         animation = camera.animate()
         animation.save('output.gif', writer='imagemagick')
 
 if __name__ == '__main__':
+    if os.path.exists(resultsDir):
+        shutil.rmtree(resultsDir)
+    os.makedirs(resultsDir)
     main()
