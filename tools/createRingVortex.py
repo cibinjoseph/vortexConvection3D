@@ -2,11 +2,12 @@
 
 """ Creates vortex coordinates for a vortex ring """
 import numpy as np
+import io
 
 radius = 1.0
 zCoordinate = 0.0
 nFilaments = 25
-filename = 'vortexFilaments.dat'
+outputString = io.StringIO()
 
 # Create coordinates of a circle
 thetas = np.linspace(0.0, 2.0*np.pi, nFilaments)
@@ -23,4 +24,7 @@ vRingStart = vRingStart[0:-1, :]
 
 vortices = np.append(vRingStart, vRingEnd, axis=1)
 
-np.savetxt(filename, vortices)
+# Print coordinates to stdout
+np.savetxt(outputString, vortices)
+print(outputString.getvalue())
+outputString.close()
