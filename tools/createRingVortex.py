@@ -6,6 +6,8 @@ import io
 
 radius = 1.0
 zCoordinate = 0.5
+xShift = 0.0
+yShift = 0.0
 nFilaments = 25
 outputString = io.StringIO()
 
@@ -13,7 +15,9 @@ outputString = io.StringIO()
 thetas = np.linspace(0.0, 2.0*np.pi, nFilaments+1)
 vRingStart = []
 for theta in thetas:
-    xyz = [radius*np.cos(theta), radius*np.sin(theta), zCoordinate]
+    xyz = [radius*np.cos(theta) + xShift, \
+           radius*np.sin(theta) + yShift, \
+           zCoordinate]
     vRingStart.append(xyz)
 
 # Create start and end points for 
