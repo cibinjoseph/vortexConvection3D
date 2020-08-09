@@ -3,6 +3,7 @@ import numpy as np
 
 
 eps = np.finfo(float).eps
+tol = 1.0E-6
 inv4pi = 0.25/np.pi
 
 class Vtx:
@@ -33,7 +34,7 @@ class Vtx:
         r1Xr2Abs2 = np.dot(r1Xr2, r1Xr2)
 
         vel = np.array([0.0, 0.0, 0.0])
-        if r1Xr2Abs2 > eps:
+        if r1Xr2Abs2 > tol:
             r0 = r1-r2
             r1Unit = r1/np.linalg.norm(r1)
             r2Unit = r2/np.linalg.norm(r2)
