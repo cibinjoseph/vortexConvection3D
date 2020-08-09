@@ -5,12 +5,12 @@ import numpy as np
 import io
 
 radius = 1.0
-zCoordinate = 0.0
+zCoordinate = 0.5
 nFilaments = 25
 outputString = io.StringIO()
 
 # Create coordinates of a circle
-thetas = np.linspace(0.0, 2.0*np.pi, nFilaments)
+thetas = np.linspace(0.0, 2.0*np.pi, nFilaments+1)
 vRingStart = []
 for theta in thetas:
     xyz = [radius*np.cos(theta), radius*np.sin(theta), zCoordinate]
