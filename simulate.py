@@ -11,8 +11,8 @@ from celluloid import Camera
 
 
 # Simulation parameters
-dt = 0.1
-nt = 25
+dt = 0.05
+nt = 200
 generateAnimation = False
 generatePlots = True
 
