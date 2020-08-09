@@ -11,8 +11,8 @@ from celluloid import Camera
 
 
 # Simulation parameters
-dt = 0.01
-nt = 3
+dt = 0.1
+nt = 25
 generateAnimation = False
 generatePlots = True
 
@@ -83,16 +83,8 @@ def main():
             write2file(resultsDir + 'vortices' + timestamp + '.plt', vortx)
 
         for vt in vortx:
-            print('--')
-            print('Coords')
-            print(vt.P1)
-            print(vt.P2)
             for vtOther in vortx:
-                print('by')
-                print(vtOther.P1)
-                print(vtOther.P2)
                 vt.addInfluenceBy(vtOther)
-                print(vt.vel1)
 
         for vt in vortx:
             vt.update(dt)
