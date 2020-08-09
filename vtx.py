@@ -3,7 +3,7 @@ import numpy as np
 
 
 eps = np.finfo(float).eps
-tol = 1.0E-6
+tol = 1.0E-3
 inv4pi = 0.25/np.pi
 
 class Vtx:
@@ -21,7 +21,7 @@ class Vtx:
         self.vel1 = 0.0
         self.vel2 = 0.0
         if rc < eps:
-            self.rc = 1E-6
+            self.rc = tol
         else:
             self.rc = rc
 
